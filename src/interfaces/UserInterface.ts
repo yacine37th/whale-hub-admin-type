@@ -1,5 +1,5 @@
 export type IUser = {
-    id:string,
+    userID:string,
     userName : string,
     userInvested : number[],
     userEmail : string,

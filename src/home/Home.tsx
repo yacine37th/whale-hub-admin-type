@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import IUser from "../interfaces/UserInterface";
 import {
   collection,
-  doc,
   getDocs,
   query,
-  updateDoc,
   where,
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import { DocumentData } from "@firebase/firestore";
 import LoadingSpinner from "../components/LoadingSpinner";
 import UserCart from "../components/UserCart";
-import { ErrorResponse } from "react-router-dom";
+
 
 function Home() {
   const [users, setusers] = useState<IUser[]>([]);
@@ -22,9 +19,9 @@ function Home() {
     collection(db, "users"),
     where("userIsAccepted", "==", false)
   );
-  const userArray = [];
+  const userArray: IUser[] = [];
 
-  const getdata = async (): void => {
+  const getdata = async ():void => {
     try {
       setloading(true);
       const querySnapshot = await getDocs(q);
@@ -49,6 +46,7 @@ function Home() {
     return () => getdata();
   }, []);
   return (
+  <>
     <div>
       <div className="px-20 max-[768px]:px-10">
         {loading ? (
@@ -92,7 +90,9 @@ function Home() {
                   //   }
                   // })
                   .map((user) => (
-                    <UserCart key={user.userID} user={user} />
+                    <UserCart key={user.userID} user={user} 
+                    setusers={setusers} users={users}
+                    />
                   ))
               )}
             </div>
@@ -100,6 +100,7 @@ function Home() {
         )}
       </div>
     </div>
+  </>
   );
 }
 
