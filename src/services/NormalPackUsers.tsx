@@ -7,7 +7,10 @@ function NormalPackUsers({}: Props) {
   return (
     <>
     <HomeNavBar />
-<p>normal pack</p>
+<p>normal pack
+
+  
+</p>
     </>
   )
 }
