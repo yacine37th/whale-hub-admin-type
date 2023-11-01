@@ -7,6 +7,7 @@ function DiamandPackUsers({}: Props) {
   return (
    <>
    <HomeNavBar />
+   <p>DIamand pack</p>
    </>
   )
 }
