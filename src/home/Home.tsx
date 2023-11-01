@@ -9,6 +9,7 @@ import {
 import { db } from "../firebase/firebase";
 import LoadingSpinner from "../components/LoadingSpinner";
 import UserCart from "../components/UserCart";
+import HomeNavBar from "./HomeNavBar";
 
 
 function Home() {
@@ -47,6 +48,7 @@ function Home() {
   }, []);
   return (
   <>
+  <HomeNavBar />
     <div>
       <div className="px-20 max-[768px]:px-10">
         {loading ? (
