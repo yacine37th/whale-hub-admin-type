@@ -7,6 +7,7 @@ export type IUser = {
 }
 
 export type TNormalUser = {
+    filter(arg0: (use: any) => boolean): TNormalUser[]
     userID:string,
     userActiveDeposit: string ,
     userName : string,

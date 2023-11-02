@@ -12,6 +12,7 @@ import { db } from "../firebase/firebase";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HomeNavBar from "../home/HomeNavBar";
 import { TNormalUser } from "../interfaces/UserInterface";
+import NormalPack from "../components/NormalPack";
 
 function NormalPackUsers() {
   const [users, setusers] = useState<TNormalUser[]>([]);
@@ -255,17 +256,17 @@ function NormalPackUsers() {
                     }
                   })
                   .map((user) => (
-                    // <NormalPackUsers
-                    //   key={user.userID}
-                    //   user={user}
-                    //   setselectedUsers={setselectedUsers}
-                    //   selectedUsers={selectedUsers}
-                    //   setselectedUsersToWithdraw={setselectedUsersToWithdraw}
-                    //   selectedUsersToWithdraw={selectedUsersToWithdraw}
-                    // />
-                    <div>
-                      <p>{user.userEmail}</p>
-                    </div>
+                    <NormalPack
+                      key={user.userID}
+                      user={user}
+                      setselectedUsers={setselectedUsers}
+                      selectedUsers={selectedUsers}
+                      setselectedUsersToWithdraw={setselectedUsersToWithdraw}
+                      selectedUsersToWithdraw={selectedUsersToWithdraw}
+                    />
+                    // <div>
+                    //   <p>{user.userEmail}</p>
+                    // </div>
                   ))
               )}
             </div>
