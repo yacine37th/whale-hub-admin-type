@@ -255,7 +255,7 @@ function NormalPackUsers() {
                     }
                   })
                   .map((user) => (
-                    // <GoldPackUsersChosen
+                    // <NormalPackUsers
                     //   key={user.userID}
                     //   user={user}
                     //   setselectedUsers={setselectedUsers}
@@ -264,7 +264,7 @@ function NormalPackUsers() {
                     //   selectedUsersToWithdraw={selectedUsersToWithdraw}
                     // />
                     <div>
-                      <p>cdcd</p>
+                      <p>{user.userEmail}</p>
                     </div>
                   ))
               )}
