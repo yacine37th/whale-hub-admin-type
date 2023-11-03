@@ -3,8 +3,8 @@ import { TNormalUser } from "../interfaces/UserInterface";
 
 type Props = {
   user: TNormalUser;
-  selectedUsers: TNormalUser;
-  selectedUsersToWithdraw: TNormalUser;
+  selectedUsers: TNormalUser[];
+  selectedUsersToWithdraw: TNormalUser[];
   setselectedUsers(selectedUsers : TNormalUser[]): void;
   setselectedUsersToWithdraw(selectedUsersToWithdraw : TNormalUser[]): void;
 };
