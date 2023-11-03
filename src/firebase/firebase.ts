@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { collection, getFirestore, query } from "firebase/firestore";
+import { collection, getFirestore, query, where } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyADydo7EcSIk_nyLbSGcn5UXeQD9ND9qaQ",
@@ -18,3 +18,8 @@ export const db = getFirestore(app);
 
 
 export const userCollection = query(collection(db, "users"));
+export const normalPack =  query(
+  collection(db, "users"),
+  where("userIsAccepted", "==", true),
+  where("userPack", "==", "NORMAL PACK")
+);

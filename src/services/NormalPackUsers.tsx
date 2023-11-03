@@ -8,7 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { db } from "../firebase/firebase";
+import { db, normalPack } from "../firebase/firebase";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HomeNavBar from "../home/HomeNavBar";
 import { TNormalUser } from "../interfaces/UserInterface";
@@ -26,11 +26,11 @@ function NormalPackUsers() {
   const [withdrewPercentage2, setwithdrewPercentage2] = useState<number>(0);
 
   const [totalin, settotalin] = useState<number>(0);
-  const q = query(
-    collection(db, "users"),
-    where("userIsAccepted", "==", true),
-    where("userPack", "==", "NORMAL PACK")
-  );
+  // const q = query(
+  //   collection(db, "users"),
+  //   where("userIsAccepted", "==", true),
+  //   where("userPack", "==", "NORMAL PACK")
+  // );
   const [loadingUpdate, setloadingUpdate] = useState(false);
   const [loadingUpdate2, setloadingUpdate2] = useState(false);
 
@@ -40,7 +40,7 @@ function NormalPackUsers() {
   const getdata = async ():Promise<void> => {
     try {
       setloading(true);
-      const querySnapshot = await getDocs(q);
+      const querySnapshot = await getDocs(normalPack);
       querySnapshot.forEach((doc) => {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
