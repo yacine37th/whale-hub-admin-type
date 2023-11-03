@@ -23,3 +23,9 @@ export const normalPack =  query(
   where("userIsAccepted", "==", true),
   where("userPack", "==", "NORMAL PACK")
 );
+
+export const goldenPack =  query(
+  collection(db, "users"),
+  where("userIsAccepted", "==", true),
+  where("userPack", "==", "GOLDEN PACK")
+);
