@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import HomeNavBar from '../home/HomeNavBar'
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { arrayUnion, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { db, goldenPack } from '../firebase/firebase';
 import { TNormalUser } from '../interfaces/UserInterface';
 import NormalPack from '../components/NormalPack';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 type Props = {}
 
