@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "whale-hub",
   storageBucket: "whale-hub.appspot.com",
   messagingSenderId: "124280521072",
-  appId: "1:124280521072:web:d09c562d24c0080be04fb5"
+  appId: "1:124280521072:web:d09c562d24c0080be04fb5",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -16,16 +16,20 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-
 export const userCollection = query(collection(db, "users"));
-export const normalPack =  query(
+export const normalPack = query(
   collection(db, "users"),
   where("userIsAccepted", "==", true),
   where("userPack", "==", "NORMAL PACK")
 );
 
-export const goldenPack =  query(
+export const goldenPack = query(
   collection(db, "users"),
   where("userIsAccepted", "==", true),
   where("userPack", "==", "GOLDEN PACK")
+);
+
+export const allUsers = query(
+  collection(db, "users"),
+  where("userIsAccepted", "==", false)
 );

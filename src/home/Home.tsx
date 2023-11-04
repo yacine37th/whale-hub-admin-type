@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { getDocs } from "firebase/firestore";
+import { allUsers } from "../firebase/firebase";
 import LoadingSpinner from "../components/LoadingSpinner";
 import UserCart from "../components/UserCart";
 import HomeNavBar from "./HomeNavBar";
@@ -9,23 +9,17 @@ import { IUser } from "../interfaces/UserInterface";
 const Home: React.FC = () => {
   const [users, setusers] = useState<IUser[]>([]);
   const [loading, setloading] = useState<boolean>(false);
-
-  const q = query(
-    collection(db, "users"),
-    where("userIsAccepted", "==", false)
-  );
   const userArray: IUser[] = [];
 
   const getdata = async (): Promise<void> => {
     try {
       setloading(true);
-      const querySnapshot = await getDocs(q);
+      const querySnapshot = await getDocs(allUsers);
       querySnapshot.forEach((doc) => {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
       });
-
       setusers(userArray);
       console.log("====================================");
       console.log(users);
@@ -52,9 +46,6 @@ const Home: React.FC = () => {
               className="flex justify-center items-center   h-screen p-0
       "
             >
-              {/* <div class=" flex justify-center items-center">
-          <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-900"></div>
-        </div> */}
               <LoadingSpinner width={"w-16"} height={"h-16"} text="" />
             </div>
           ) : (
