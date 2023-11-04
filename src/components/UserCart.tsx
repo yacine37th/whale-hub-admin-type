@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IUser } from "../interfaces/UserInterface";
 import LoadingSpinner from "./LoadingSpinner";
 import { toast } from "react-toastify";
+import { toastSuccess } from "./Toast";
 // import { collection, doc, updateDoc } from "firebase/firestore";
 // import { db } from "../firebase/firebase";
 
@@ -31,9 +32,10 @@ function UserCart({ user, setusers, users }: Props) {
             //   userIsAccepted: true,
             // });
             // alert("The user has been accepted");
-            toast.success("Successfully user accepted!", {
-              position: toast.POSITION.TOP_LEFT,
-            });
+            // toast.success("Successfully user accepted!", {
+            //   position: toast.POSITION.TOP_LEFT,
+            // });
+            toastSuccess("Successfully user accepted!")
 
             setusers(users.filter((user2) => user2 !== user));
           } catch (error) {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import IUser from "../interfaces/UserInterface";
 import {
   collection,
   getDocs,
