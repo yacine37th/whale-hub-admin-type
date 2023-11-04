@@ -22,7 +22,7 @@ function Home() {
   );
   const userArray: IUser[] = [];
 
-  const getdata = async ():void => {
+  const getdata = async ():Promise<void> => {
     try {
       setloading(true);
       const querySnapshot = await getDocs(q);
@@ -46,9 +46,15 @@ function Home() {
   useEffect(() => {
     return () => getdata();
   }, []);
+
+ 
+
+  
   return (
   <>
   <HomeNavBar />
+ 
+
     <div>
       <div className="px-20 max-[768px]:px-10">
         {loading ? (

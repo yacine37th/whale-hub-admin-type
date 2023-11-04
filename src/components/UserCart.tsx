@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IUser } from "../interfaces/UserInterface";
 import LoadingSpinner from "./LoadingSpinner";
+import { toast } from "react-toastify";
 // import { collection, doc, updateDoc } from "firebase/firestore";
 // import { db } from "../firebase/firebase";
 
@@ -13,6 +14,7 @@ type Props = {
 function UserCart({ user, setusers, users }: Props) {
   const [loadingUpdate, setloadingUpdate] = useState<boolean>(false);
 
+ 
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl">
       <p>{user.userPack}</p>
@@ -28,11 +30,18 @@ function UserCart({ user, setusers, users }: Props) {
             // await updateDoc(doc(collection(db, "users"), `${user.userID}`), {
             //   userIsAccepted: true,
             // });
-            alert("The user has been accepted");
+            // alert("The user has been accepted");
+            toast.success("Successfully user accepted!", {
+              position: toast.POSITION.TOP_LEFT,
+            });
+
             setusers(users.filter((user2) => user2 !== user));
           } catch (error) {
             console.log(error);
-            alert("Error happened , please try again");
+            // alert("Error happened , please try again");
+            toast.error("Error happened , please try again!", {
+              position: toast.POSITION.TOP_CENTER,
+            });
           } finally {
             setloadingUpdate(false);
           }

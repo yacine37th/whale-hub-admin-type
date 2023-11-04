@@ -5,8 +5,8 @@ type Props = {
   user: TNormalUser;
   selectedUsers: TNormalUser[];
   selectedUsersToWithdraw: TNormalUser[];
-  setselectedUsers(selectedUsers : TNormalUser[]): void;
-  setselectedUsersToWithdraw(selectedUsersToWithdraw : TNormalUser[]): void;
+  setselectedUsers(selectedUsers: TNormalUser[]): void;
+  setselectedUsersToWithdraw(selectedUsersToWithdraw: TNormalUser[]): void;
 };
 
 const NormalPack = ({
