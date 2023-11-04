@@ -1,16 +1,13 @@
-import React from 'react'
-import HomeNavBar from '../home/HomeNavBar'
+import React from "react";
+import HomeNavBar from "../home/HomeNavBar";
 
-type Props = {}
-
-function DiamandPackUsers({}: Props) {
-  
+const DiamandPackUsers: React.FC = () => {
   return (
-   <>
-   <HomeNavBar />
-   <p>DIamand pack</p>
-   </>
-  )
-}
+    <>
+      <HomeNavBar />
+      <p>DIamand pack</p>
+    </>
+  );
+};
 
-export default DiamandPackUsers
+export default DiamandPackUsers;

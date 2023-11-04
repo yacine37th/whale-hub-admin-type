@@ -3,9 +3,7 @@ import {
   collection,
   doc,
   getDocs,
-  query,
   updateDoc,
-  where,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db, normalPack } from "../firebase/firebase";
@@ -14,10 +12,12 @@ import HomeNavBar from "../home/HomeNavBar";
 import { TNormalUser } from "../interfaces/UserInterface";
 import NormalPack from "../components/NormalPack";
 
-function NormalPackUsers() {
+const NormalPackUsers: React.FC = () => {
   const [users, setusers] = useState<TNormalUser[]>([]);
   const [selectedUsers, setselectedUsers] = useState<TNormalUser[]>([]);
-  const [selectedUsersToWithdraw, setselectedUsersToWithdraw] = useState<TNormalUser[]>([]);
+  const [selectedUsersToWithdraw, setselectedUsersToWithdraw] = useState<
+    TNormalUser[]
+  >([]);
   const [loading, setloading] = useState<boolean>(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState<number>(0);
@@ -34,10 +34,10 @@ function NormalPackUsers() {
   const [loadingUpdate, setloadingUpdate] = useState(false);
   const [loadingUpdate2, setloadingUpdate2] = useState(false);
 
-  const userArray : TNormalUser[] = [];
-  let userTotalInvested :number= 0;
+  const userArray: TNormalUser[] = [];
+  let userTotalInvested: number = 0;
 
-  const getdata = async ():Promise<void> => {
+  const getdata = async (): Promise<void> => {
     try {
       setloading(true);
       const querySnapshot = await getDocs(normalPack);
@@ -45,7 +45,7 @@ function NormalPackUsers() {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        doc.data().userInvested.forEach((element:number) => {
+        doc.data().userInvested.forEach((element: number) => {
           userTotalInvested += Number(element);
         });
         // total = total + Number(doc.data().userInvested);
@@ -66,7 +66,7 @@ function NormalPackUsers() {
   };
 
   useEffect(() => {
-   return ()=> getdata();
+    return () => getdata();
   }, []);
   return (
     <>
@@ -77,7 +77,7 @@ function NormalPackUsers() {
             className="flex justify-center items-center   h-screen p-0
             "
           >
-            <LoadingSpinner width={"w-16"} height={"h-16"} text={""}  />
+            <LoadingSpinner width={"w-16"} height={"h-16"} text={""} />
           </div>
         ) : (
           <>
@@ -113,7 +113,7 @@ function NormalPackUsers() {
                     try {
                       setloadingUpdate(true);
                       selectedUsers.forEach(async (user) => {
-                        let totalInvested :number = 0;
+                        let totalInvested: number = 0;
                         user.userInvested.forEach((element) => {
                           totalInvested += Number(element);
                         });
@@ -189,7 +189,7 @@ function NormalPackUsers() {
                     try {
                       setloadingUpdate2(true);
                       selectedUsersToWithdraw.forEach(async (user) => {
-                        let totalInvested :number= 0;
+                        let totalInvested: number = 0;
                         user.userInvested.forEach((element) => {
                           totalInvested += Number(element);
                         });
@@ -275,6 +275,6 @@ function NormalPackUsers() {
       </div>
     </>
   );
-}
+};
 
 export default NormalPackUsers;

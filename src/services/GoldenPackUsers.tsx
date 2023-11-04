@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import HomeNavBar from '../home/HomeNavBar'
-import { arrayUnion, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
-import { db, goldenPack } from '../firebase/firebase';
-import { TNormalUser } from '../interfaces/UserInterface';
-import NormalPack from '../components/NormalPack';
-import LoadingSpinner from '../components/LoadingSpinner';
+import React, { useEffect, useState } from "react";
+import HomeNavBar from "../home/HomeNavBar";
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
+import { db, goldenPack } from "../firebase/firebase";
+import { TNormalUser } from "../interfaces/UserInterface";
+import NormalPack from "../components/NormalPack";
+import LoadingSpinner from "../components/LoadingSpinner";
 
-type Props = {}
-
-function GoldenPackUsers({}: Props) {
+const GoldenPackUsers: React.FC = () => {
   const [users, setusers] = useState<TNormalUser[]>([]);
   const [selectedUsers, setselectedUsers] = useState<TNormalUser[]>([]);
-  const [selectedUsersToWithdraw, setselectedUsersToWithdraw] = useState<TNormalUser[]>([]);
+  const [selectedUsersToWithdraw, setselectedUsersToWithdraw] = useState<
+    TNormalUser[]
+  >([]);
   const [loading, setloading] = useState<boolean>(false);
   const [search, setsearch] = useState("");
   const [amount, setAmount] = useState<number>(0);
@@ -28,9 +36,8 @@ function GoldenPackUsers({}: Props) {
   const [loadingUpdate, setloadingUpdate] = useState(false);
   const [loadingUpdate2, setloadingUpdate2] = useState(false);
 
-
-  const userArray : TNormalUser[] = [];
-  let userTotalInvested :number= 0;
+  const userArray: TNormalUser[] = [];
+  let userTotalInvested: number = 0;
 
   const getdata = async () => {
     try {
@@ -40,7 +47,7 @@ function GoldenPackUsers({}: Props) {
         if (!userArray.includes(doc.data())) {
           userArray.push(doc.data());
         }
-        doc.data().userInvested.forEach((element :number) => {
+        doc.data().userInvested.forEach((element: number) => {
           userTotalInvested += Number(element);
         });
       });
@@ -59,14 +66,14 @@ function GoldenPackUsers({}: Props) {
   }, []);
   return (
     <>
-    <HomeNavBar />
-    <div className="px-20 max-[768px]:px-10">
+      <HomeNavBar />
+      <div className="px-20 max-[768px]:px-10">
         {loading ? (
           <div
             className="flex justify-center items-center   h-screen p-0
             "
           >
-            <LoadingSpinner width={"w-16"} height={"h-16"} text={""}  />
+            <LoadingSpinner width={"w-16"} height={"h-16"} text={""} />
           </div>
         ) : (
           <>
@@ -102,7 +109,7 @@ function GoldenPackUsers({}: Props) {
                     try {
                       setloadingUpdate(true);
                       selectedUsers.forEach(async (user) => {
-                        let totalInvested :number = 0;
+                        let totalInvested: number = 0;
                         user.userInvested.forEach((element) => {
                           totalInvested += Number(element);
                         });
@@ -178,7 +185,7 @@ function GoldenPackUsers({}: Props) {
                     try {
                       setloadingUpdate2(true);
                       selectedUsersToWithdraw.forEach(async (user) => {
-                        let totalInvested :number= 0;
+                        let totalInvested: number = 0;
                         user.userInvested.forEach((element) => {
                           totalInvested += Number(element);
                         });
@@ -263,7 +270,7 @@ function GoldenPackUsers({}: Props) {
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default GoldenPackUsers
+export default GoldenPackUsers;
