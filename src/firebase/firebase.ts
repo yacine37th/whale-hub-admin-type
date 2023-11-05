@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { collection, getFirestore, query, where } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyADydo7EcSIk_nyLbSGcn5UXeQD9ND9qaQ",
-  authDomain: "whale-hub.firebaseapp.com",
-  projectId: "whale-hub",
-  storageBucket: "whale-hub.appspot.com",
-  messagingSenderId: "124280521072",
-  appId: "1:124280521072:web:d09c562d24c0080be04fb5",
+  apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
+  authDomain: `${import.meta.env.VITE_AUTHDOMAIN}`,
+  projectId:  `${import.meta.env.VITE_PROJECTID}`,
+  storageBucket: `${import.meta.env.VITE_STORAGEBUCKET}`,
+  messagingSenderId: `${import.meta.env.VITE_MESSAGINGSENDERID}`,
+  appId: `${import.meta.env.APIID}`
 };
 
 const app = initializeApp(firebaseConfig);
