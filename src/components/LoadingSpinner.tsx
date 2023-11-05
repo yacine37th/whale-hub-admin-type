@@ -4,7 +4,7 @@ type LoadingType = {
   height: string;
   text: string;
 };
-function LoadingSpinner({ width, height, text } : LoadingType) {
+function LoadingSpinner({ width, height, text }: LoadingType) {
   return (
     <div role="status">
       <svg
@@ -30,3 +30,5 @@ function LoadingSpinner({ width, height, text } : LoadingType) {
 }
 
 export default LoadingSpinner;
+
+

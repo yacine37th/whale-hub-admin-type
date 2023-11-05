@@ -15,7 +15,6 @@ type Props = {
 function UserCart({ user, setusers, users }: Props) {
   const [loadingUpdate, setloadingUpdate] = useState<boolean>(false);
 
- 
   return (
     <div className="m-4 border p-7 w-80 rounded-2xl">
       <p>{user.userPack}</p>
@@ -35,7 +34,7 @@ function UserCart({ user, setusers, users }: Props) {
             // toast.success("Successfully user accepted!", {
             //   position: toast.POSITION.TOP_LEFT,
             // });
-            toastSuccess("Successfully user accepted!")
+            toastSuccess("Successfully user accepted!");
 
             setusers(users.filter((user2) => user2 !== user));
           } catch (error) {

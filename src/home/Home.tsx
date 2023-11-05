@@ -5,12 +5,13 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import UserCart from "../components/UserCart";
 import HomeNavBar from "./HomeNavBar";
 import { IUser } from "../interfaces/UserInterface";
+import { LoadingCart } from "../components/LoadingCart";
 
 const Home: React.FC = () => {
   const [users, setusers] = useState<IUser[]>([]);
   const [loading, setloading] = useState<boolean>(false);
   const userArray: IUser[] = [];
-
+  
   const getdata = async (): Promise<void> => {
     try {
       setloading(true);
@@ -43,10 +44,12 @@ const Home: React.FC = () => {
         <div className="px-20 max-[768px]:px-10">
           {loading ? (
             <div
-              className="flex justify-center items-center   h-screen p-0
-      "
+              // className="flex justify-center items-center   h-screen p-0"
+              className="flex flex-wrap justify-center items-center"
             >
-              <LoadingSpinner width={"w-16"} height={"h-16"} text="" />
+              <LoadingCart />
+
+              {/*//<LoadingSpinner width={"w-16"} height={"h-16"} text="" />*/}
             </div>
           ) : (
             <>
