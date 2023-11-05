@@ -24,7 +24,9 @@ const NormalPack = ({
   const [checked2, setchecked2] = useState<boolean>(false);
   return (
     <div
-      className={`m-4 border p-7 w-80 rounded-2xl ${checked && "bg-red-800 text-white"}
+      className={`m-4 border p-7 w-80 rounded-2xl ${
+        checked && "bg-red-800 text-white"
+      }
       ${checked2 && "bg-red-800 text-white"}
       `}
       key={user.userID}

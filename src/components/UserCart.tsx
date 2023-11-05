@@ -10,7 +10,6 @@ type Props = {
   user: IUser;
   setusers(user: IUser[]): void;
   users: IUser[];
-  disable?: boolean;
 };
 
 function UserCart({ user, setusers, users }: Props) {
@@ -28,7 +27,7 @@ function UserCart({ user, setusers, users }: Props) {
       <button
         disabled={total === 0}
         className={`
-        ${total === 0 && "bg-red-900"}
+        ${total === 0 && "bg-red-600"}
         w-full p-4 button-background-register border-white  text-white  text-base
     rounded-none hover:border-white bg-blue-900 `}
         onClick={async () => {
