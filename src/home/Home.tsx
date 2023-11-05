@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   const [users, setusers] = useState<IUser[]>([]);
   const [loading, setloading] = useState<boolean>(false);
   const userArray: IUser[] = [];
-  
+
   const getdata = async (): Promise<void> => {
     try {
       setloading(true);
