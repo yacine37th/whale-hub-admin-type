@@ -25,10 +25,8 @@ const NormalPack = ({
   return (
     <div
       className={`m-4 border p-7 w-80 rounded-2xl ${
-        checked && "bg-red-800 text-white"
-      }
-      ${checked2 && "bg-red-800 text-white"}
-      `}
+        (checked || checked2) && "bg-red-800 text-white"
+      }`}
       key={user.userID}
     >
       <div className="flex items-center justify-between mb-4  flex-1">
